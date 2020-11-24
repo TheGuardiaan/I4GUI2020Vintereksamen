@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,20 @@ namespace I4GUI2020Vintereksamen
         }
 
         public IConfiguration Configuration { get; }
+
+
+        public void AddPolicyWithClaim(IServiceCollection services, string policy, string claim)
+        {
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy(
+                    policy,
+                    policyBuilder => policyBuilder
+                    .RequireClaim(claim));
+            });
+
+        }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -44,12 +59,18 @@ namespace I4GUI2020Vintereksamen
                 options.Password.RequireLowercase = false;
             })
 
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+            AddPolicyWithClaim(services, "isAdmin", "admin");
+
+
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ILogger<Startup> log)
         {
             if (env.IsDevelopment())
             {
@@ -68,6 +89,8 @@ namespace I4GUI2020Vintereksamen
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            UserAdd.SeedUsers(userManager, log);
 
             app.UseEndpoints(endpoints =>
             {

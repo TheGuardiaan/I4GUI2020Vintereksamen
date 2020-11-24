@@ -44,8 +44,11 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            public string UserName { get; set; }
+
+            //[Required]
+            //[EmailAddress]
+            //public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -82,7 +85,14 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                //If Contains"@" result have email else username
+                var result = (Input.UserName.Contains("@")) ? 
+                    await _signInManager.PasswordSignInAsync(await _userManager.FindByEmailAsync(Input.UserName), Input.Password, Input.RememberMe, lockoutOnFailure: false):
+                    await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                             
+
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");

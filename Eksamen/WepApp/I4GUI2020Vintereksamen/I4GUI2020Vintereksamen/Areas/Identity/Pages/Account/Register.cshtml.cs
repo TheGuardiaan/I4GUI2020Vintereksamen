@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -47,8 +48,20 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [PersonalData]
+            [Column(TypeName = "nvarchar(100)")]
             [Display(Name = "Fornavn")]
             public string FirstName { get; set; }
+
+            [Required]
+            [PersonalData]
+            [Column(TypeName = "nvarchar(100)")]
+            [Display(Name = "Efternavn")]
+            public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Brugenavn")]
+            public string UserName { get; set; }
 
             [Required]
             [EmailAddress]
@@ -81,9 +94,11 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser 
                 { 
-                    UserName = Input.Email, 
+                    UserName = Input.UserName, 
                     Email = Input.Email,
-                    FirstName = Input.FirstName
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName
+                    
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

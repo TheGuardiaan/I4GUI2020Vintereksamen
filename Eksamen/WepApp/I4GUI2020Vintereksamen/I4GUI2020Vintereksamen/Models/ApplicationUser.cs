@@ -13,10 +13,12 @@ namespace I4GUI2020Vintereksamen.Models
 
             [PersonalData]
             [Column(TypeName = "nvarchar(100)")]
+            [Display(Name = "Fornavn")]
             public string FirstName { get; set; }
 
             [PersonalData]
             [Column(TypeName = "nvarchar(100)")]
+            [Display(Name = "Efternavn")]
             public string LastName { get; set; }
 
 
@@ -24,6 +26,7 @@ namespace I4GUI2020Vintereksamen.Models
             [DataType(DataType.Date)]
             public DateTime Dob { get; set; }
            
+
     }
     
 }
