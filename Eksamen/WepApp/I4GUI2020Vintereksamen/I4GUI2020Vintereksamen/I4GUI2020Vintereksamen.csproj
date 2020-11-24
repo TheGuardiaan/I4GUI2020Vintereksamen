@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\DbModels\" />
-  </ItemGroup>
-
 </Project>

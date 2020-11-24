@@ -48,19 +48,18 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [PersonalData]
-            [Column(TypeName = "nvarchar(100)")]
             [Display(Name = "Fornavn")]
+            [StringLength(50, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string FirstName { get; set; }
 
             [Required]
-            [PersonalData]
-            [Column(TypeName = "nvarchar(100)")]
             [Display(Name = "Efternavn")]
+            [StringLength(50, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
             [Display(Name = "Brugenavn")]
+            [StringLength(25, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string UserName { get; set; }
 
             [Required]
@@ -69,14 +68,14 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [StringLength(100, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 2)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "De to koder er ikke enes.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -93,12 +92,12 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser 
-                { 
+                {
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
                     UserName = Input.UserName, 
                     Email = Input.Email,
-                    FirstName = Input.FirstName,
-                    LastName = Input.LastName
-                    
+                                      
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

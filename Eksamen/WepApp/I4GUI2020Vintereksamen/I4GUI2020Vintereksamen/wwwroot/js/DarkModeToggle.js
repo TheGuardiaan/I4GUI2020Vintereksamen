@@ -58,8 +58,15 @@ function darkMode() {
     //Header_bg
     toggleClass("nav", "lightmode-header", "darkmode-header");
 
-    //Text
+    //Header - text
     toggleClass("a", "text-dark", "text-light");
+
+    //Text Logout
+    toggleClass("button", "text-dark", "text-light");
+
+    //footer-bg
+    toggleClass("footer", "lightmode-footer", "darkmode-footer");
+
 
 }
 
@@ -81,8 +88,15 @@ function lightMode() {
     //Header_bg
     toggleClass("nav", "darkmode-header", "lightmode-header");
 
-    //Text
+    //Header - text
     toggleClass("a", "text-light", "text-dark");
+
+    //Text Logout
+    toggleClass("button", "text-light", "text-dark");
+
+    //footer-bg
+    toggleClass("footer", "darkmode-footer", "lightmode-footer");
+
 
 }
 
