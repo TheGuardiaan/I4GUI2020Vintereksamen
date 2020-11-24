@@ -62,6 +62,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -100,4 +101,69 @@ div.card-content {
 
 div.login-form-icon {
     text-align: center;
+}
+
+
+
+
+
+
+/* DarkMode
+-------------------------------------------------- */
+.darkmode-body {
+    background-color: #1E1E1E;
+    color: #efefef;
+}
+
+.darkmode-header {
+    background-color: #2D2D30;
+    color: #efefef;
+}
+
+
+/* LightMode
+-------------------------------------------------- */
+.lightmode-body {
+    background-color: white;
+    color: black;
+}
+
+.lightmode-header {
+    background-color: #BDB76B;
+    color: black;
+}
+
+.toggle-icon {
+    font-size: 2em;
+    float: right;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+
+.icon-sun {
+    font-size: 1.5em;
+    margin-left: 0.08em;
+}
+
+.icon-moon {
+    font-size: 1.5em;
+}
+
+
+.darkmode-sun-icon {
+    opacity: 0.1;
+}
+
+.darkmode-moon-icon {
+    opacity: 1;
+}
+
+
+.lightmode-sun-icon {
+    opacity: 1;
+}
+
+.lightmode-moon-icon {
+    opacity: 0.1;
 }

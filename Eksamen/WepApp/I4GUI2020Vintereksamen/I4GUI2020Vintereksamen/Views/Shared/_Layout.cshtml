@@ -16,11 +16,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
 
 </head>
-<body>
+<body class="lightmode-body">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light lightmode-header  border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">I4GUI2020Vintereksamen</a>
+                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index">I4GUI2020Vintereksamen</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -48,9 +48,16 @@
 
                     </ul>
                     <partial name="_LoginPartial" />
+
+                    <i class="fas fa-sun icon-sun lightmode-sun-icon"></i>
+                        <i class="fas fa-toggle-off toggle-icon" onclick="toggleModeFunction()"></i>                   
+                    <i class="fas fa-moon icon-moon lightmode-moon-icon"></i>
+
                 </div>
             </div>
+            
         </nav>
+        
     </header>
 
     <div class="container">
@@ -60,14 +67,26 @@
         </main>
     </div>
 
+
+
+
+    
+
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - I4GUI2020Vintereksamen - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
         </div>
     </footer>
+
+
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/DarkModeToggle.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
