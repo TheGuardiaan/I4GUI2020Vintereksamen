@@ -39,7 +39,13 @@ function toggleMode() {
         //Text - logout
         ["button", "text-dark", "text-light"],
         //footer-bg
-        ["footer", "lightmode-footer", "darkmode-footer"]
+        ["footer", "lightmode-footer", "darkmode-footer"],
+        //Dropdown background
+        ["div", "bg-light", "bg-dark"],
+        //Span window 
+        ["span", "text-dark", "text-light"]
+
+        
     ];
 
     if (localStorage.hasOwnProperty("modeview")) {

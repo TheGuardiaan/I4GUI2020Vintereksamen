@@ -40,22 +40,13 @@
 
 /*-------------------------------------------------- */
 .toggle-icon {
-    font-size: 2em;
-    float: right;
+    
+    /*float: right;*/
     margin-left: 0.2em;
     margin-right: 0.2em;
 }
 
-.icon-sun {
-    font-size: 1.5em;
-    margin-left: 0.08em;
-    float: right;
-}
 
-.icon-moon {
-    font-size: 1.5em;
-    float: right;
-}
 
 
 .darkmode-sun-icon {
