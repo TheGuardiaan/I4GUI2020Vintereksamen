@@ -2,15 +2,17 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@{ViewData["LogoText"] = "I4GUIVinter"; }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - I4GUI2020Vintereksamenss</title>
+    <title>@ViewData["Title"] - @ViewData["LogoText"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/darkmode.css" />
 
     <!-- Awesome Icons CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
@@ -18,61 +20,126 @@
 </head>
 <body class="lightmode-body">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light lightmode-header  border-bottom box-shadow mb-3">
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm  lightmode-header border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class=" navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" />&emsp;I4GUIVinter</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark col" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark col" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+
+                            <li class="navbar-nav nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-sun icon-sun lightmode-sun-icon"></i>
+                                        <i class="fas fa-toggle-off toggle-icon" onclick="toggleModeFunction()"></i>
+                                        <i class="fas fa-moon icon-moon lightmode-moon-icon"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                @if (User.HasClaim("admin", "Yes"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark col" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>*@
+
+        <nav class="lightmode-header">
             <div class="container">
+                <div class="float-left">
+                    <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logo" />&emsp;<strong>@ViewData["LogoText"]</strong></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
 
+            <div class="container centent">
+                <div class="row justify-content-end">
+                    <div class="col-6">
+                        <partial name="_LoginPartial" />
+                    </div>
 
-                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/aulogo_white.png" />&emsp;I4GUIVinter</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav col-6">
+                        <li class="navbar-nav nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-moon icon-moon lightmode-moon-icon"></i>
+                                    <i class="fas fa-toggle-off toggle-icon" onclick="toggleModeFunction()"></i>
+                                    <i class="fas fa-sun icon-sun lightmode-sun-icon"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
+                <div class="row justify-content-end align-content-end">
+                    <ul class="navbar-nav col align-self-end">
                         @if (User.HasClaim("admin", "Yes"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                <a class="nav-link text-dark col" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
                             </li>
                         }
-
-
-
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-
-
                     </ul>
-                    <partial name="_LoginPartial" />
 
-                    <i class="fas fa-sun icon-sun lightmode-sun-icon"></i>
-                    <i class="fas fa-toggle-off toggle-icon" onclick="toggleModeFunction()"></i>
-                    <i class="fas fa-moon icon-moon lightmode-moon-icon"></i>
+                    <ul class="navbar-nav col align-self-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark col" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
 
+                    <ul class="navbar-nav col align-self-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark col" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
         </nav>
-        
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            <partial name="_NotificationPartial" />
-            @RenderBody()
-        </main>
-    </div>
+
+
+    <main role="main" class="pb-3" style="">
+        <partial name="_NotificationPartial" />
+        @RenderBody()
+    </main>
 
 
 
 
-    
+
+
 
 
     <footer class="border-top footer text-muted lightmode-footer">
@@ -83,12 +150,12 @@
     </footer>
 
 
-    
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/DarkModeToggle.js" asp-append-version="true"></script>
+    <script src="~/js/darkmodeToggle.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

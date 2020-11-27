@@ -3,26 +3,26 @@ for details on configuring this project to bundle and minify static web assets. 
 
 a.navbar-brand {
   white-space: normal;
-  text-align: center;
+  text-align: left;
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
+ /*Provide sufficient contrast against white background*/ 
 a {
   color: #0366d6;
 }
 
-.btn-primary {
+/*.btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+}*/
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+/*.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+}*/
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -111,86 +111,12 @@ div.login-form-icon {
 
 
 
-
-/* DarkMode
--------------------------------------------------- */
-.darkmode-header {
-    background-color: #2D2D30;
-    color: #efefef;
-}
-
-.darkmode-body {
-    background-color: #1E1E1E;
-    color: #efefef;
-}
-
-.darkmode-footer {
-    background-color: #3E3E42;
-    color: #efefef;
-}
-
-
-/* LightMode
--------------------------------------------------- */
-.lightmode-header {
-    background-color: #EEEEF2;
-    color: black;
-}
-
-.lightmode-body {
-    background-color: #FFFFFF;
-    color: black;
-}
-
-.lightmode-footer {
-    background-color: #F5F5F5;
-    color: black;
-}
-
-
-
-
-/*-------------------------------------------------- */
-.toggle-icon {
-    font-size: 2em;
-    float: right;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
-}
-
-.icon-sun {
-    font-size: 1.5em;
-    margin-left: 0.08em;
-    float: right;
-}
-
-.icon-moon {
-    font-size: 1.5em;
-    float: right;
-}
-
-
-.darkmode-sun-icon {
-    opacity: 0.1;
-}
-
-.darkmode-moon-icon {
-    opacity: 1;
-}
-
-
-.lightmode-sun-icon {
-    opacity: 1;
-}
-
-.lightmode-moon-icon {
-    opacity: 0.1;
-}
-
-
-
 img.aulogo{
    width: 25%;
 }
 
 
+
+.bannertemplet {
+    max-height: 12em;
+}

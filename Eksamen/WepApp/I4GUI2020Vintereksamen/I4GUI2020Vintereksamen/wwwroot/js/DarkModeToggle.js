@@ -20,89 +20,65 @@ function toggleModeFunction() {
     toggleMode();
 }
 
-
-
-
 function toggleMode() {
+    const toggleArr = [/*["tag", "white", "dark"]*/
+        //Icon-toggle
+        ["i", "fa-toggle-off", "fa-toggle-on"],
+        //Icon-moon-opacity
+        ["i", "fa-toggle-off", "fa-toggle-on"],
+        //Icon-moon
+        ["i", "lightmode-sun-icon", "darkmode-sun-icon"],
+        //Body_bg
+        ["i", "lightmode-moon-icon", "darkmode-moon-icon"],
+        //Header_bg
+        ["body", "lightmode-body", "darkmode-body"],
+        //Header - text
+        ["nav", "lightmode-header", "darkmode-header"],
+        //Text - menues
+        ["a", "text-dark", "text-light"],
+        //Text - logout
+        ["button", "text-dark", "text-light"],
+        //footer-bg
+        ["footer", "lightmode-footer", "darkmode-footer"]
+    ];
+
     if (localStorage.hasOwnProperty("modeview")) {
-        if (localStorage["modeview"] == "toggle-darkmode") {
-            darkMode();
-        } else if (localStorage["modeview"] == "toggle-lightmode") {
-            lightMode();
+        if (localStorage["modeview"] == "toggle-darkmode") {////----------DarkMode------------------
+            for (let i = 0; i < toggleArr.length; i++) {
+                toggleClass(toggleArr[i][0], toggleArr[i][1], toggleArr[i][2]);
+            }
+            toggleSrc("logo","/img/logo/aulogo_white.png");
+        } else if (localStorage["modeview"] == "toggle-lightmode") {////----------LightMode------------------
+            for (let i = 0; i < toggleArr.length; i++) {
+                toggleClass(toggleArr[i][0], toggleArr[i][2], toggleArr[i][1]);
+            }
+            toggleSrc("logo","/img/logo/aulogo_blue.png");
         }
     } else {
         localStorage["modeview"] = "toggle-lightmode";
-        lightMode();
+        for (let i = 0; i < toggleArr.length; i++) {////----------LightMode------------------
+            toggleClass(toggleArr[i][0], toggleArr[i][2], toggleArr[i][1]);
+        }
+        toggleSrc("logo","/img/logo/aulogo_blue.png");
+
     }
-
-
 }
-
-
-
-
-//----------DarkMode------------------
-function darkMode() {
-
-    //Icon-toggle
-    toggleClass("i", "fa-toggle-off", "fa-toggle-on");
-
-    //Icon-moon-opacity
-    toggleClass("i", "lightmode-sun-icon", "darkmode-sun-icon");
-    //Icon-moon
-    toggleClass("i", "lightmode-moon-icon", "darkmode-moon-icon")
-
-    //Body_bg
-    toggleClass("body", "lightmode-body", "darkmode-body");
-
-    //Header_bg
-    toggleClass("nav", "lightmode-header", "darkmode-header");
-
-    //Header - text
-    toggleClass("a", "text-dark", "text-light");
-
-    //Text Logout
-    toggleClass("button", "text-dark", "text-light");
-
-    //footer-bg
-    toggleClass("footer", "lightmode-footer", "darkmode-footer");
-
-
-}
-
-
-//----------LightMode------------------
-function lightMode() {
-
-    //Icon-toogle
-    toggleClass("i", "fa-toggle-on", "fa-toggle-off");
-
-    //Icon-sun-opacity
-    toggleClass("i", "darkmode-sun-icon", "lightmode-sun-icon");
-    //Icon-sun
-    toggleClass("i", "darkmode-moon-icon", "lightmode-moon-icon")
-
-    //Body_bg
-    toggleClass("body", "darkmode-body", "lightmode-body");
-
-    //Header_bg
-    toggleClass("nav", "darkmode-header", "lightmode-header");
-
-    //Header - text
-    toggleClass("a", "text-light", "text-dark");
-
-    //Text Logout
-    toggleClass("button", "text-light", "text-dark");
-
-    //footer-bg
-    toggleClass("footer", "darkmode-footer", "lightmode-footer");
-
-
-}
-
 
 
 function toggleClass(e, cF, cT) {
-    var textWhite = $(e+"."+cF);
+    let textWhite = $(e + "." + cF);
     textWhite.removeClass(cF).addClass(cT);
 }
+
+
+
+
+
+
+
+function toggleSrc(id, cF) {
+
+    let element = document.getElementById(id).setAttribute("src", cF);
+}
+
+
