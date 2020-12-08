@@ -22,22 +22,30 @@ function toggleModeFunction() {
 
 function toggleMode() {
     const toggleArr = [/*["tag", "white", "dark"]*/
-        //Icon-toggle
-        ["i", "fa-toggle-off", "fa-toggle-on"],
-        //Icon-moon-opacity
-        ["i", "fa-toggle-off", "fa-toggle-on"],
-        //Icon-moon
-        ["i", "lightmode-sun-icon", "darkmode-sun-icon"],
-        //Body_bg
-        ["i", "lightmode-moon-icon", "darkmode-moon-icon"],
-        //Header_bg
+
+        //Icon-toggle-off
+        ["svg", "fa-toggle-off", "fa-toggle-on"],
+        //Icon - Sun
+        ["svg", "lightmode-sun-icon", "darkmode-sun-icon"],
+        //Icon - Moon
+        ["svg", "lightmode-moon-icon", "darkmode-moon-icon"],
+
+        //Body - bg
         ["body", "lightmode-body", "darkmode-body"],
+        //Header - bg
+        ["nav", "bg-header-light", "bg-header-dark"],
         //Header - text
-        ["nav", "lightmode-header", "darkmode-header"],
+        ["nav", "navbar-dark", "navbar-light"],
+
+        //SideBar - bg
+        ["nav", "bg-sidebar-light", "bg-sidebar-dark"],
+
+        
         //Text - menues
         ["a", "text-dark", "text-light"],
         //Text - logout
         ["button", "text-dark", "text-light"],
+
         //footer-bg
         ["footer", "lightmode-footer", "darkmode-footer"],
         //Dropdown background
@@ -53,19 +61,22 @@ function toggleMode() {
             for (let i = 0; i < toggleArr.length; i++) {
                 toggleClass(toggleArr[i][0], toggleArr[i][1], toggleArr[i][2]);
             }
-            toggleSrc("logo","/img/logo/aulogo_white.png");
+            toggleSrc("logo", "/img/logo/aulogo_white.png");
+            toggleSrc("logoSide", "/img/logo/aulogo_white.png");
         } else if (localStorage["modeview"] == "toggle-lightmode") {////----------LightMode------------------
             for (let i = 0; i < toggleArr.length; i++) {
                 toggleClass(toggleArr[i][0], toggleArr[i][2], toggleArr[i][1]);
             }
-            toggleSrc("logo","/img/logo/aulogo_blue.png");
+            toggleSrc("logo", "/img/logo/aulogo_blue.png");
+            toggleSrc("logoSide", "/img/logo/aulogo_blue.png");
         }
     } else {
         localStorage["modeview"] = "toggle-lightmode";
         for (let i = 0; i < toggleArr.length; i++) {////----------LightMode------------------
             toggleClass(toggleArr[i][0], toggleArr[i][2], toggleArr[i][1]);
         }
-        toggleSrc("logo","/img/logo/aulogo_blue.png");
+        toggleSrc("logo", "/img/logo/aulogo_blue.png");
+        toggleSrc("logoSide", "/img/logo/aulogo_blue.png");
 
     }
 }

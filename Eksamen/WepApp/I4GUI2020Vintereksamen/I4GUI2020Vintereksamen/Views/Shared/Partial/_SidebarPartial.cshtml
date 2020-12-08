@@ -1,0 +1,111 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{ViewData["TitleText"] = "I4GUIVinter"; }
+@{ViewData["Author"] = "Casper Fevre Hansen"; }
+@{ViewData["StudieNr"] = "201501949"; }
+
+<div class="wrapper fixed-top">
+    
+
+    <!-- Sidebar Holder -->
+    <nav id="sidebar" class="navbar-light bg-sidebar-light">
+
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <a class="navbar-brand text-dark" style="margin-top:-0.6em;" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logoSide" /><strong>  @ViewData["TitleText"]</strong></a>
+        </div>
+        <div class="dropdown-divider" style="margin-top:-0.6em;"></div>
+
+
+
+        <ul class="list-unstyled components">
+            <li class="nav-item">
+
+                @*----------MainMenue--------------*@
+                <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">  <i class="fas fa-home"></i>&emsp;&emsp;Home</a>
+                <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">  <i class="fas fa-paper-plane"></i>&emsp;&emsp;Contact</a>
+                <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">  <i class="fas fa-user-secret"></i>&emsp;&emsp;Admin</a>
+                <div class="dropdown-divider"></div>
+
+
+                @*-------------Pages-----------*@
+                <a class="nav-link text-dark submenu-page" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages <i class="fas fa-caret-down"></i></a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 3</a>
+                    </li>
+                </ul>
+
+                <a class="nav-link text-dark" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Pages2 <i class="fas fa-caret-down"></i></a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" href="#">Page 3</a>
+                    </li>
+                </ul>
+                <div class="dropdown-divider"></div>
+
+
+                @*--------DarkModeToggle----------------*@
+                <a class="text-dark toggle-mode-text">Device theme</a>
+
+                <a class="dropdown-item text-dark" style="padding-left:3.5em;" onclick="toggleModeFunction()">
+                    <i class="fas fa-sun lightmode-sun-icon mode-icon"></i>
+                    <i class="fas fa-toggle-off mode-icon-toggle"></i>
+                    <i class="fas fa-moon lightmode-moon-icon mode-icon"></i>
+                </a>
+
+
+
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+            <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+
+
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-header-light ">
+
+
+        <button type="button" id="sidebarCollapse" class="btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span class="text-dark"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logo" /><strong>  @ViewData["TitleText"]</strong></a>
+
+        <a class="float-right"><partial name="./Partial/_LoginPartial" /></a>
+
+    </nav>
+
+
+
+</div>
+
+
+
+<div class="overlay"></div>
+
+

@@ -8,9 +8,9 @@ a.navbar-brand {
 }
 
  /*Provide sufficient contrast against white background*/ 
-a {
+/*a {
   color: #0366d6;
-}
+}*/
 
 /*.btn-primary {
   color: #fff;
@@ -70,7 +70,7 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
-
+/*-------------------------------------------------- */
 
 
 
@@ -107,14 +107,12 @@ div.login-form-icon {
     text-align: center;
 }
 
-
+/*-------------------------------------------------- */
 
 
 
 img.aulogo {
-    width: 25%;
-    margin-left: 0.5em;
-    
+    width: 3em;
 }
 
 .logo-text{
@@ -139,8 +137,18 @@ img.aulogo {
 }
 
 
-.layoutLogin{
-    margin-top: 10em;
+h5 {
+    text-shadow: 2px 2px 3px black;
 }
 
+h7 {
+    text-shadow: 2px 2px 4px black;
+}
+
+
+
+
+.layoutLogin {
+    margin-top: 10em;
+}
 

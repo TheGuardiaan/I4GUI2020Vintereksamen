@@ -3,8 +3,8 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @{ViewData["TitleText"] = "I4GUIVinter"; }
-@{ViewData["MeName"] = "Casper Fevre Hansen - 201501949"; }
-
+@{ViewData["Author"] = "Casper Fevre Hansen"; }
+@{ViewData["StudieNr"] = "201501949"; }
 
 
 
@@ -20,185 +20,38 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/darkmode.css" />
+    <link rel="stylesheet" href="~/css/sidebar.css" />
+
+
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style3.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 
     <!-- Awesome Icons CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
 <body class="lightmode-body">
     <header>
-
-
-        @*<nav class="lightmode-header">
-            <div class="float-left logo-text">
-                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logo" />&emsp;<strong>@ViewData["TitleText"]</strong></a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fas fa-bars"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-
-
-                <ul class="nav justify-content-end top-nav1">
-                    <li class="nav-item dropleft">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item"><i class="fas fa-language"></i>&emsp;Language: English</a>
-                            <a class="dropdown-item"><i class="fas fa-cog"></i>&emsp;Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Device theme:</a>
-                            <a class="dropdown-item" onclick="toggleModeFunction()"><i class="fas fa-moon" onclick="toggleModeFunction()"></i>&emsp;Dark theme</a>
-                            <a class="dropdown-item" onclick="toggleModeFunction()"><i class="fas fa-sun" onclick="toggleModeFunction()"></i>&emsp;Light theme</a>
-
-                            <div class="justify-content-center">
-                                <i class="fas fa-moon fa-2x icon-moon lightmode-moon-icon justify-content-center"></i>
-                                <i class="fas fa-toggle-off fa-2x toggle-icon justify-content-center" onclick="toggleModeFunction()"></i>
-                                <i class="fas fa-sun icon-sun fa-2x lightmode-sun-icon justify-content-center"></i>
-                            </div>
-
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <partial name="_LoginPartial" />
-                    </li>
-                </ul>
-
-                <ul class="nav justify-content-end top-nav2">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        @if (User.HasClaim("admin", "Yes"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index"> Admin</a>
-                            </li>
-                        }
-                    }
-                </ul>
-
-            </div>
-        </nav>*@
-
-
-
-        <nav class="  lightmode-header border-bottom box-shadow mb-3">
-
-
-            <div class="float-left logo-text">
-                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logo" />&emsp;<strong>@ViewData["TitleText"]</strong></a>
-            </div>
-
-
-            <ul class="nav justify-content-end top-nav1">
-                <li class="nav-item">
-                    <partial name="_LoginPartial" />
-                </li>
-                <li class="nav-item dropleft">
-                    <a class="nav-link text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-dark"><i class="fas fa-language"></i>&emsp;Language: English</a>
-                        <a class="dropdown-item text-dark"><i class="fas fa-cog"></i>&emsp;Settings</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item disabled text-dark" href="#" tabindex="-1" aria-disabled="true">Device theme:</a>
-                        <a class="dropdown-item text-dark" onclick="toggleModeFunction()"><i class="fas fa-moon" onclick="toggleModeFunction()"></i>&emsp;Dark theme</a>
-                        <a class="dropdown-item text-dark" onclick="toggleModeFunction()"><i class="fas fa-sun" onclick="toggleModeFunction()"></i>&emsp;Light theme</a>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="nav justify-content-end top-nav2">
-                <li class="nav-item">
-                    <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </li>
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    @if (User.HasClaim("admin", "Yes"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index"> Admin</a>
-                        </li>
-                    }
-                }
-            </ul>
-
-        </nav>
-
-
-        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
-            <div class="float-left logo-text">
-                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img class="aulogo" src="~/img/logo/aulogo_white.png" id="logo" />&emsp;<strong>@ViewData["TitleText"]</strong></a>
-            </div>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="text-dark"> -More- </span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-
-
-                <ul class="nav justify-content-end top-nav1">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bars"></i>
-                        </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <partial name="_LoginPartial" />
-                    </li>
-                    <li class="nav-item dropleft">
-                        <a class="nav-link text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item text-dark"><i class="fas fa-language"></i>&emsp;Language: English</a>
-                            <a class="dropdown-item text-dark"><i class="fas fa-cog"></i>&emsp;Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item disabled text-dark" href="#" tabindex="-1" aria-disabled="true">Device theme:</a>
-                            <a class="dropdown-item text-dark" onclick="toggleModeFunction()"><i class="fas fa-moon" onclick="toggleModeFunction()"></i>&emsp;Dark theme</a>
-                            <a class="dropdown-item text-dark" onclick="toggleModeFunction()"><i class="fas fa-sun" onclick="toggleModeFunction()"></i>&emsp;Light theme</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>*@
-
+        <partial name="./Partial/_SidebarPartial"/>
     </header>
 
 
-
-
-
-
-
-
-
-    <main role="main" class="pb-3" style="">
-        <partial name="_NotificationPartial" />
+    <main role="main" class="pb-3" style="margin-top:4em">
+        <partial name="./Partial/_NotificationPartial"/>
         @RenderBody()
     </main>
-
-
-
-
 
 
 
@@ -206,20 +59,49 @@
         <div class="container">
             &copy; 2020 - I4GUI2020Vintereksamen - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
-            <a class="float-right text-light"><strong>@ViewData["MeName"]</strong></a>
-
-
+            <a class="float-right text-light"><strong>@ViewData["Author"] - @ViewData["StudieNr"]</strong></a>
+            <br />
+            <a class="float-right text-light time" style="margin-top:-2em" id="clock"> {{ time }}</a>
         </div>
-
     </footer>
-
-
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/darkmodeToggle.js" asp-append-version="true"></script>
+    <script src="~/js/clock.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    @*----------------SideBar-------------*@
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').fadeOut();
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').fadeIn();
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+    @*-----------------------------*@
+
 </body>
 </html>
