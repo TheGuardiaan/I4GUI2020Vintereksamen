@@ -1,4 +1,6 @@
 using I4GUI2020Vintereksamen.Data;
+using I4GUI2020Vintereksamen.Infrastructure;
+using I4GUI2020Vintereksamen.Infrastructure.Services;
 using I4GUI2020Vintereksamen.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -62,8 +64,11 @@ namespace I4GUI2020Vintereksamen
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
 
             AddPolicyWithClaim(services, "isAdmin", "admin");
+            AddPolicyWithClaim(services, "isUser", "user");
 
 
             services.AddControllersWithViews();

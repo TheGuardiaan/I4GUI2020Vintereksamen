@@ -15,7 +15,7 @@ namespace I4GUI2020Vintereksamen.Data
         {
             
             const string Password = "123";
-            DateTime dob = DateTime.Now;
+            
 
             if (userManager.FindByNameAsync("Admin@localhost").Result == null)
             {
@@ -24,18 +24,37 @@ namespace I4GUI2020Vintereksamen.Data
                 {
                     UserName = "admin",
                     Email = "Admin@localhost",
-                    FirstName = "Marek",
-                    LastName = "Dowling"
+                    FirstName = "Boss",
+                    LastName = "Hr"
                 };
                 IdentityResult result = userManager.CreateAsync(user, Password).Result;
 
                 if (result.Succeeded)
                 {
                     await userManager.AddClaimAsync(user, new Claim("admin", "Yes"));
+                    await userManager.AddClaimAsync(user, new Claim("user", "Yes"));
                 }
             }
 
-         
+            if (userManager.FindByNameAsync("user@localhost").Result == null)
+            {
+                log.LogWarning("Seeding the admin user");
+                var user = new ApplicationUser
+                {
+                    UserName = "user",
+                    Email = "user@localhost",
+                    FirstName = "User",
+                    LastName = "1"
+                };
+                IdentityResult result = userManager.CreateAsync(user, Password).Result;
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddClaimAsync(user, new Claim("user", "Yes"));
+                }
+            }
+
+
 
         }
     }

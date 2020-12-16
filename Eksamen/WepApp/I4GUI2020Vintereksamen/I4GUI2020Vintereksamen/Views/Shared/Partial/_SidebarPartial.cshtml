@@ -29,39 +29,50 @@
                 @*----------MainMenue--------------*@
                 <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Index">  <i class="fas fa-home"></i>&emsp;&emsp;Home</a>
                 <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">  <i class="fas fa-paper-plane"></i>&emsp;&emsp;Contact</a>
-                <a class="nav-link text-dark " asp-area="" asp-controller="Home" asp-action="Privacy">  <i class="fas fa-user-secret"></i>&emsp;&emsp;Admin</a>
+
+                @if (User.HasClaim("admin", "Yes"))
+                {
+                    <a class="nav-link text-dark " asp-area="" asp-controller="Admin" asp-action="Index">  <i class="fas fa-user-secret"></i>&emsp;&emsp;Admin</a>
+                }
                 <div class="dropdown-divider"></div>
 
 
                 @*-------------Pages-----------*@
-                <a class="nav-link text-dark submenu-page" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages <i class="fas fa-caret-down"></i></a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 3</a>
-                    </li>
-                </ul>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="nav-link text-dark submenu-page" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages <i class="fas fa-caret-down"></i></a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 3</a>
+                        </li>
+                    </ul>
 
-                <a class="nav-link text-dark" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Pages2 <i class="fas fa-caret-down"></i></a>
-                <ul class="collapse list-unstyled" id="pageSubmenu2">
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-dark" href="#">Page 3</a>
-                    </li>
-                </ul>
+                    <a class="nav-link text-dark" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Pages2 <i class="fas fa-caret-down"></i></a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" href="#">Page 3</a>
+                        </li>
+                    </ul>
+
+                } else
+                {
+                    <br />
+                    <a class="text-dark toggle-mode-text">SIGN IN TO SEE MORE MENUS </a>
+                    <br />
+                }
                 <div class="dropdown-divider"></div>
-
-
                 @*--------DarkModeToggle----------------*@
                 <a class="text-dark toggle-mode-text">Device theme</a>
 
