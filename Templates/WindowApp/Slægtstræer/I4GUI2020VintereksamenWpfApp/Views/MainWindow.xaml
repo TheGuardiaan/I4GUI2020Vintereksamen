@@ -63,7 +63,7 @@
                 </Grid.RowDefinitions>
 
                 <Rectangle Grid.ColumnSpan="3" Grid.RowSpan="2" Fill="#3F3F46" />
-                <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="3" Fill="#868686" />
+                <Rectangle Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="3" Fill="#868686" />
 
                 <Image Grid.ColumnSpan="6" Grid.RowSpan="2" Stretch="Uniform" Source="/Images/familyTree.png" HorizontalAlignment="Center" />
 
