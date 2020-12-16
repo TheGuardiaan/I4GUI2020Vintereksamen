@@ -39,7 +39,7 @@ function toggleMode() {
 
         //SideBar - bg
         ["nav", "bg-sidebar-light", "bg-sidebar-dark"],
-        
+
         
         //Text - menues
         ["a", "text-dark", "text-light"],
@@ -51,10 +51,8 @@ function toggleMode() {
         //Dropdown background
         ["div", "bg-light", "bg-dark"],
         //Span window 
-        ["span", "text-dark", "text-light"],
+        ["span", "text-dark", "text-light"]
 
-        //Tabel-bg 
-        ["tr", "bg-table-light", "bg-table-dark"]
         
     ];
 

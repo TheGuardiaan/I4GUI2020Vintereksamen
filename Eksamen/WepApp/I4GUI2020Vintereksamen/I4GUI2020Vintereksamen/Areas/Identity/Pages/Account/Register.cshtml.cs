@@ -6,11 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using I4GUI2020Vintereksamen.Infrastructure;
 using I4GUI2020Vintereksamen.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +21,6 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly IUnitOfWork _unitofwork; // Burges til at oploade profil billede
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
@@ -33,15 +30,12 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
-            IUnitOfWork unitofwork)
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            _unitofwork = unitofwork;
-
         }
 
         [BindProperty]
@@ -54,51 +48,33 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "Fornavn*")]
+            [Display(Name = "Fornavn")]
             [StringLength(50, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string FirstName { get; set; }
 
             [Required]
-            [Display(Name = "Efternavn*")]
+            [Display(Name = "Efternavn")]
             [StringLength(50, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
-            [Display(Name = "Brugenavn*")]
+            [Display(Name = "Brugenavn")]
             [StringLength(25, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 3)]
             public string UserName { get; set; }
 
-
-
-            [Display(Name = "Telefonnummer")]
-            public string PhoneNumber { get; set; }
-
-
-
-            [Display(Name = "Fødselsdags Dato")]
-            [DataType(DataType.Date)]
-            public DateTime? Dob { get; set; }
-
-            [Display(Name = "Profil billede")]
-            public string ImagePath { get; set; }
-
-
-
             [Required]
             [EmailAddress]
-            [Display(Name = "Email*")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "{0} skal mindst være {2}.", MinimumLength = 2)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password*")]
+            [Display(Name = "Password")]
             public string Password { get; set; }
 
-
-            [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password*")]
+            [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "De to koder er ikke enes.")]
             public string ConfirmPassword { get; set; }
         }
@@ -109,27 +85,20 @@ namespace I4GUI2020Vintereksamen.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(IFormFile file, string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                _unitofwork.UploadImage(file);
                 var user = new ApplicationUser 
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     UserName = Input.UserName, 
                     Email = Input.Email,
-                    PhoneNumber = Input.PhoneNumber,
-                    Dob = Input.Dob,
-                    ImagePath = file.FileName
+                                      
                 };
-
-                
-
-
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

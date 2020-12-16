@@ -27,9 +27,6 @@ namespace I4GUI2020Vintereksamen.Models
                 get { return LastName + ", " + FirstName; }
             }
 
-            [Display(Name = "Profil billede")]
-            public string ImagePath { get; set; }
-
 
             [Display(Name = "Sidste 4-CPR")]
             [Range(0, 4)]
@@ -38,10 +35,8 @@ namespace I4GUI2020Vintereksamen.Models
 
             [Display(Name = "Fødselsdags Dato")]
             [DataType(DataType.Date)]
-            public DateTime? Dob { get; set; }
-
-
+            public DateTime Dob { get; set; }
            
-        }
+    }
     
 }

@@ -55,6 +55,10 @@
 
 
 
+
+
+
+
 .darkmode-sun-icon {
     opacity: 0.1;
 }
@@ -74,24 +78,3 @@
 
 
 
-
-/* DarkMode-table
--------------------------------------------------- */
-
-.bg-table-dark {
-    color: whitesmoke;
-    background-color: #303436;
-    border-top: hidden;
-}
-
-
-
-
-/* LightMode-table
--------------------------------------------------- */
-
-.bg-table-light {
-    color: #1E1E1E;
-    background-color: #F5F5F5;
-    border-top: hidden;
-}
