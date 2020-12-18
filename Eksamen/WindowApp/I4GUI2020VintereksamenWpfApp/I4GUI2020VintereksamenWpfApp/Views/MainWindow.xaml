@@ -88,15 +88,15 @@
 
 
                 <StackPanel Grid.Column="1" Grid.Row="1" Margin="5, 5">
-                    <ListView Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" MinWidth="300" 
+                    <ListView Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left"  
                       ItemsSource="{Binding Path=Persons}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
-                                    <GridViewColumn Width="140" Header="Name" DisplayMemberBinding="{Binding Path=FullName}" />
+                                    <GridViewColumn  Header="Name" DisplayMemberBinding="{Binding Path=FullName}" />
                                     
-                                    <GridViewColumn Width="140" Header="Dob" DisplayMemberBinding="{Binding Path=Dob, StringFormat='dd-MMM-yyyy'}"/>
-                                    <GridViewColumn Width="140" Header="Gender" DisplayMemberBinding="{Binding Path=Gender}"/>
+                                    <GridViewColumn  Header="Dob" DisplayMemberBinding="{Binding Path=Dob, StringFormat='dd-MMM-yyyy'}"/>
+                                    <GridViewColumn  Header="Gender" DisplayMemberBinding="{Binding Path=Gender}"/>
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

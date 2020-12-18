@@ -50,7 +50,7 @@ namespace I4GUI2020VintereksamenWpfApp.Model
             set { SetProperty(ref _lastName, value); }
         }
 
-        public string FullName1 => $"{FirstName} {LastName}";
+        public string FullName => $"{FirstName} {LastName}";
 
 
         public Gender Gender
