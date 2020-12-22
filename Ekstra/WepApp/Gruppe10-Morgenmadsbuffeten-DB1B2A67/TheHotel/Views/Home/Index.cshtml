@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome til The Hotel</h1>
+    <p>Denne side er her for at gøre det nemme at teste hjemmesiden. <br />
+    Der for ville denne siden self. ikke være til stede ude i virkligheden</p>
+</div>
+
+<div class="tooltips ">
+    Hvis du ser dette icon
+    <i class="fas fa-info-circle"></i>
+    har du mulighed for at holde markøre over det for at få en kort forklarning af siden.
+    <span class="tooltiptexts text-sm-left">
+        --- Kort forklar af denne siden ---
+    </span>
+</div>
+
+
+<br />
+<p>Her under ses en liste af bruge kan er oprette i systemet.<br />Alle koderne/passewords er 123</p>
+<p>Adminstrator Login<br />&emsp;&emsp;Username: admin<br />&emsp;&emsp;Password: 123 </p>
+<p>Køkkenet Login<br />&emsp;&emsp;Username: kok<br />&emsp;&emsp;Password: 123 </p>
+<p>Restauranten Login<br />&emsp;&emsp;Username: tjener<br />&emsp;&emsp;Password: 123 </p>
+<p>Receptionen Login<br />&emsp;&emsp;Username: receptionist<br />&emsp;&emsp;Password: 123 </p>
+<br />
+
+
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <a class="nav-link text-light btn-info" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </div>
+}
+
+
+
+
+

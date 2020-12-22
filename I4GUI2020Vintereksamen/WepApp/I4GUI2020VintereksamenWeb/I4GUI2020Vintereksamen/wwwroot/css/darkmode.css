@@ -1,0 +1,79 @@
+﻿
+
+/* DarkMode
+-------------------------------------------------- */
+.bg-header-dark {
+    background-color: #2D2D30;
+}
+
+.darkmode-body {
+    background-color: #1E1E1E;
+    color: #efefef;
+}
+
+.darkmode-footer {
+    background-color: #3E3E42;
+    color: #efefef;
+}
+
+.bg-sidebar-dark {
+    background: #3E3E42;
+}
+
+
+/* LightMode
+-------------------------------------------------- */
+.bg-header-light {
+    background-color: #EEEEF2;
+}
+
+.lightmode-body {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.lightmode-footer {
+    background-color: #F5F5F5;
+    color: black;
+}
+
+.bg-sidebar-light {
+    background: #F5F5F5;
+}
+
+.mode-icon {
+    font-size: 1.5em;
+}
+
+.mode-icon-toggle {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    font-size: 1.3em;
+}
+
+
+
+
+
+
+
+
+.darkmode-sun-icon {
+    opacity: 0.1;
+}
+
+.darkmode-moon-icon {
+    opacity: 1;
+}
+
+
+.lightmode-sun-icon {
+    opacity: 1;
+}
+
+.lightmode-moon-icon {
+    opacity: 0.1;
+}
+
+
+

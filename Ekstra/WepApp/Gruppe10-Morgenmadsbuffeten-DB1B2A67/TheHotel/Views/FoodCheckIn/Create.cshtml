@@ -1,0 +1,66 @@
+﻿@model TheHotel.Data.Entity.FoodCheckIn
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="tooltips">
+    <i class="fas fa-info-circle"></i>
+    <span class="tooltiptexts text-sm-left">
+        De gæster du ser på lister her under er for denne dag. <br />
+        Det betyder derfor, at hvid du ønsker at teste dette med en ny gæst skal "Reservere Tidspunkt" være idag!!.
+    </span>
+</div>
+
+<h1> Tjek Gæst Ind</h1>
+&emsp;&emsp;&emsp; @DateTime.Now
+<hr />
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="CheckInDate" class="control-label"></label>*@
+                <input hidden asp-for="CheckInDate" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("s")" />
+                @*<input asp-for="CheckInDate" class="form-control" />*@
+                <span asp-validation-for="CheckInDate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                @*<label asp-for="RoomId" class="control-label"></label>*@
+                <select hidden asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GuestId" class="control-label">Gæsten's Navn</label>
+
+                <select asp-for="GuestId" class="form-control" asp-items="ViewBag.GuestId"></select>
+            </div>
+
+            @*<div class="form-group">
+                    <label asp-for="GuestId" class="control-label"></label>
+
+                    <select asp-for="GuestId" class="form-control" asp-items="ViewBag.FullName"></select>
+                </div>*@
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

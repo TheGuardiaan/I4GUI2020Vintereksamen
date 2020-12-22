@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-TheHotel-DB1B2A67-2EC6-47EC-AA88-9F11D69E0259</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201115212018_DbSet_Rooms_Guests_FoodCheckIns.cs" />
+    <Compile Remove="Migrations\20201115212018_DbSet_Rooms_Guests_FoodCheckIns.Designer.cs" />
+    <Compile Remove="Migrations\20201116063040_GuestEntiNoChildren.cs" />
+    <Compile Remove="Migrations\20201116063040_GuestEntiNoChildren.Designer.cs" />
+    <Compile Remove="Migrations\20201116063416_GuestEntiRemoveDob.cs" />
+    <Compile Remove="Migrations\20201116063416_GuestEntiRemoveDob.Designer.cs" />
+    <Compile Remove="Migrations\20201116063735_GuestEntiFix.cs" />
+    <Compile Remove="Migrations\20201116063735_GuestEntiFix.Designer.cs" />
+    <Compile Remove="Migrations\20201116064123_GuestEntiFix2.cs" />
+    <Compile Remove="Migrations\20201116064123_GuestEntiFix2.Designer.cs" />
+    <Compile Remove="Migrations\20201116064254_GuestEntiFix3.cs" />
+    <Compile Remove="Migrations\20201116064254_GuestEntiFix3.Designer.cs" />
+    <Compile Remove="Migrations\20201116064338_GuestEntiFix34.cs" />
+    <Compile Remove="Migrations\20201116064338_GuestEntiFix34.Designer.cs" />
+    <Compile Remove="Migrations\20201116064434_GuestEntiFix4.cs" />
+    <Compile Remove="Migrations\20201116064434_GuestEntiFix4.Designer.cs" />
+    <Compile Remove="Migrations\20201116064818_GuestEntiFix5.cs" />
+    <Compile Remove="Migrations\20201116064818_GuestEntiFix5.Designer.cs" />
+    <Compile Remove="Migrations\20201116065002_GuestEntiFix6.cs" />
+    <Compile Remove="Migrations\20201116065002_GuestEntiFix6.Designer.cs" />
+    <Compile Remove="Migrations\20201116065254_GuestEntiFix7.cs" />
+    <Compile Remove="Migrations\20201116065254_GuestEntiFix7.Designer.cs" />
+    <Compile Remove="Migrations\20201116065334_GuestEntiFix8.cs" />
+    <Compile Remove="Migrations\20201116065334_GuestEntiFix8.Designer.cs" />
+    <Compile Remove="Migrations\20201116124156_ICollectionApplicationUser.cs" />
+    <Compile Remove="Migrations\20201116124156_ICollectionApplicationUser.Designer.cs" />
+    <Compile Remove="Migrations\20201116124407_ICollectionApplicationUser.cs" />
+    <Compile Remove="Migrations\20201116124407_ICollectionApplicationUser.Designer.cs" />
+    <Compile Remove="Migrations\20201120235459_Guest_add_fullname.cs" />
+    <Compile Remove="Migrations\20201120235459_Guest_add_fullname.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

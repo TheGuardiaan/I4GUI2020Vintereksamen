@@ -1,0 +1,287 @@
+﻿<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Breathing Exercise</h1>
+    </div>
+
+</div>
+
+
+<div class="container-fluid">
+    <br />
+    <div class="" style="padding:2em; margin-right:1em; margin-bottom:5em;">
+
+
+
+        <p>
+            If you're lying down, place your arms a little bit away from your sides, with the palms up. Let your legs be straight, or bend your knees so your feet are flat on the floor.
+
+            If you're sitting, place your arms on the chair arms.
+
+            If you're sitting or standing, place both feet flat on the ground. Whatever position you're in, place your feet roughly hip-width apart.
+        </p>
+
+
+
+
+
+        <p>
+            <ul>
+                <li>Let your breath flow as deep down into your belly as is comfortable, without forcing it.</li>
+                <li>Try breathing in through your nose and out through your mouth.</li>
+                <li>Breathe in gently and regularly. Some people find it helpful to count steadily from 1 to 5. You may not be able to reach 5 at first.</li>
+                <li>Then, without pausing or holding your breath, let it flow out gently, counting from 1 to 5 again, if you find this helpful.</li>
+                <li>Keep doing this for 3 to 5 minutes.</li>
+            </ul>
+
+        </p>
+
+        <div class="line"></div>
+
+
+    </div>
+
+</div>
+
+
+
+    <div class="container">
+
+        <div>
+            <p class="d-flex justify-content-center" for="formControlRange">Choose how many minus you want to do the exercise</p>
+
+            <input type="range" id="timeRange" class="form-control-range" onchange="SetTimer()" value="1" max="20" min="0.5" step="0.5">
+            <p class="d-flex justify-content-center">Minutes:&nbsp;<span id="rangeValue">1</span></p>
+        </div>
+
+
+
+        <select class="form-control col-3" id="breathInterval">
+            <option value="5000">5 - Breath per minute</option>
+            <option value="6000">6 - Breath per minute</option>
+            <option value="7000">7 - Breath per minute</option>
+        </select>
+
+        <div class="d-flex justify-content-center">
+            <button class="btn-light btn-lg" onclick="StartButton()" style="margin-left:1em">Start</button>
+            <button class="btn-light btn-lg" onClick="window.location.reload();" style="margin-left:1em">Reset</button>
+
+        </div>
+
+
+
+        <br />
+        <div class="text-center">
+            <p style="font-size:xx-large">Timer:&nbsp;<span id="countDown">0</span></p>
+        </div>
+
+
+        <div class="text-center" style="margin-top:5em">
+            <p id="rhythm" style="font-size:xx-large">Press start to begin</p>
+        </div>
+
+        <audio controls="controls" hidden id="myAudio">
+            <source src="~/audio/MeditationMusic.mp3" type="audio/mpeg" />
+        </audio>
+
+
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="float-right">
+            <button onclick="playAudio()" type="button" class="btn-light btn-lg" style="margin-left:1em">Play Audio</button>
+            <button onclick="pauseAudio()" type="button" class="btn-light btn-lg" style="margin-left:1em">Pause Audio</button>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+
+        var c;
+        var t;
+        var timer_is_on = 0;
+
+
+
+
+        function StartButton() {
+            document.getElementById("rhythm").innerHTML = "";
+            typeWriter();
+            playAudio();
+        }
+
+
+
+        function BeginTimer() {
+
+            var c = document.getElementById("timeRange").value * 60;
+            StartProgram(c);
+        }
+
+
+        function StartProgram(x) {
+            c = x;
+
+            var myVar = StartAir();
+            document.getElementById("rhythm").innerHTML = "Breathe in"
+
+
+
+            if (!timer_is_on) {
+                timer_is_on = 1;
+
+                timedCount();
+            }
+
+
+            setTimeout(() => {
+
+                clearInterval(myVar)
+            }, (document.getElementById("timeRange").value * 60 * 1000));
+
+            //(document.getElementById("timeRange").value * 1000));
+
+
+        }
+
+
+
+
+        //------Bliver kaldt i intavalet = (document.getElementById("timeRange").value * 60 * 1000)); - "5,6,7"
+        function StartAir() {
+
+            return setInterval(() => {
+
+
+                if (document.getElementById("rhythm").innerHTML == "Breathe out") {
+                    document.getElementById("rhythm").innerHTML = "Breathe in";
+                } else
+                    document.getElementById("rhythm").innerHTML = "Breathe out";
+
+            }, document.getElementById("breathInterval").value);
+        }
+
+        function SetTimer() {
+            document.getElementById("rangeValue").innerHTML = document.getElementById("timeRange").value;
+
+        }
+
+
+        function timedCount() {
+
+            if (c < 0) {
+                timeOut() //
+                return;
+            }
+
+            document.getElementById("countDown").innerHTML = c; //Skriver countDown/tiden ud
+            c = c - 1;
+            t = setTimeout(timedCount, 1000);
+        }
+
+
+        function stopCount() {
+            clearTimeout(t);
+            timer_is_on = 0;
+            
+            document.getElementById("rhythm").innerHTML = "";
+            typeWriterEnd();
+        }
+
+
+        function timeOut() {
+            alert("Time to wake of");
+            stopCount()
+
+        }
+
+        function resetTxt() {
+            document.getElementById("rhythm").innerHTML = "Press reset to try again";
+            pauseAudio();
+        }
+
+
+
+    </script>
+
+
+    <script>
+        var i = 0;
+        var speed = 75;
+
+        var txt = 'Now is time to relax';
+
+        function typeWriter() {
+
+            if (i < txt.length) {
+                document.getElementById("rhythm").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                setTimeout(BeginTimer, 2500);
+            }
+
+        }
+
+    </script>
+
+    <script>
+        var i1 = 0;
+        var speed = 75;
+
+        var txt1 = 'Hope you got better and feel relaxed';
+
+        function typeWriterEnd() {
+            
+            if (i1 < txt1.length) {
+                document.getElementById("rhythm").innerHTML += txt1.charAt(i1);
+                i1++;
+                setTimeout(typeWriterEnd, speed);
+            } 
+            else {
+                setTimeout(resetTxt, 2500);
+            }
+
+        }
+
+    </script>
+
+
+    <script>
+        var audio = document.getElementById("myAudio");
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            //audio.pause();
+
+            // Initial volume of 0.20
+            // Make sure it's a multiple of 0.05
+            var vol = 0.20;
+            var interval = 50; // 200ms interval
+
+            var fadeout = setInterval(
+                function () {
+                    // Reduce volume by 0.05 as long as it is above 0
+                    // This works as long as you start with a multiple of 0.05!
+                    if (vol > 0) {
+                        vol -= 0.05;
+                        audio.setVolume(vol);
+                    }
+                    else {
+                        // Stop the setInterval when 0 is reached
+                        clearInterval(fadeout);
+                        audio.pause();
+                    }
+                }, interval);
+        }
+
+    </script>
+
+
+

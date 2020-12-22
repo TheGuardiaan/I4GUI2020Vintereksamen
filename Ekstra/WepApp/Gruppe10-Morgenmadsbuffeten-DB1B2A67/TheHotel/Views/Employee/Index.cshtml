@@ -1,0 +1,209 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="tooltips float-lg-left">
+    <i class="fas fa-info-circle"></i>
+    <span class="tooltiptexts text-sm-left">
+        Denne side viser antal af medarbejder<br /> <br />
+
+        Det er her muligt at oprette en ny medarbejer<br />
+        Når det sker skal der vælges en stilling ud af en select liste - <br />
+        Valget af dette giver den nye medarbejder de rigtige retteheder/Claim's til hjemme siden <br />
+    </span>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Ansatte</h1>
+</div>
+
+<p><a class="btn btn-success btn-lg" asp-action="Create">Opret Ny</a></p>
+
+<table class="table col-md-8 float-left">
+    @if (Model.Any(x => x.PositionName == "tjener"))
+    {
+        <thead>
+            <tr class="main-table">
+                <th>
+                    Tjener
+                </th>
+                <th>
+                    Fulde Navn
+                </th>
+                <th>
+                    UserName
+                </th>
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (@item.PositionName == "tjener")
+                {
+            <tr>
+                <td />
+                <td>
+                    @item.FirstName @item.LastName
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+                @*<td>
+                    <a class="btn btn-danger btn-sm confirmDeletion">Delete</a>
+                </td>*@
+            </tr>
+                }
+            }
+        </tbody>
+    }
+
+    @if (Model.Where(x => x.PositionName == "kok").FirstOrDefault() != null)
+    {
+        <thead>
+            <tr class="main-table">
+                <th>
+                    Kok
+                </th>
+                <th>
+                    Fulde Navn
+                </th>
+                <th>
+                    Bruger Navn
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                if (@item.PositionName == "kok")
+                {
+            <tr>
+                <td />
+                <td>
+                    @item.FirstName @item.LastName
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+                @*<td>
+                    <a class="btn btn-danger btn-sm confirmDeletion">Delete</a>
+                </td>*@
+            </tr>
+                }
+            }
+        </tbody>
+    }
+
+    @if (Model.Where(x => x.PositionName == "receptionist").FirstOrDefault() != null)
+    {
+        <tr></tr>
+        <thead>
+            <tr class="main-table">
+                <th>
+                    Receptionist
+                </th>
+                <th>
+                    Fulde Navn
+                </th>
+                <td>
+                    Bruger Navn
+                </td>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (@item.PositionName == "receptionist")
+                {
+            <tr>
+                <td />
+                <td>
+                    @item.FirstName @item.LastName
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+                @*<td>
+                    <a class="btn btn-danger btn-sm confirmDeletion">Delete</a>
+                </td>*@
+            </tr>
+                }
+            }
+
+        </tbody>
+    }
+
+</table>
+
+
+
+
+<table class="table col-md-3 float-right">
+    <thead>
+        <tr class="main-table">
+            <th>
+                Antal Tjener
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewData["countServing"]
+            </td>
+        </tr>
+    </tbody>
+
+
+    <thead>
+        <tr class="main-table">
+            <th>
+                Antal Kokke
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewData["countChef"]
+            </td>
+        </tr>
+    </tbody>
+
+
+
+    <thead>
+        <tr class="main-table">
+            <th>
+                Antal Receptionister
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewData["sumReceptionist"]
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="d-flex w-100 justify-content-center">
+        <Pagination page-count="@ViewBag.TotalPages" page-target="/Employee" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></Pagination>
+    </div>
+}
+
+

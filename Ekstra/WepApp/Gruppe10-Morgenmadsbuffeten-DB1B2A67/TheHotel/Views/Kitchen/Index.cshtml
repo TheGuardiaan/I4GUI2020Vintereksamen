@@ -1,0 +1,115 @@
+﻿@model TheHotel.Data.Kitchen
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Køkkenet</h1>
+</div>*@
+
+
+<form asp-action="Index">
+    <input type="submit" value="Opdatere" class="btn btn-primary btn-lg" />
+     &ensp;
+    <input style="font-size: x-large" asp-for="date" type="date" />
+</form>
+
+<h4>@ViewData["myDate"]</h4>
+
+<table class="table col-12">
+    <thead>
+        <tr class="bg-success">
+            <th>Checket Ind</th>
+            <th>
+                @Html.DisplayNameFor(model => model.sumIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.inAdult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.inChildren)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DisplayFor(model => model.sumIn)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.inAdult)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.inChildren)
+            </td>
+</tbody>
+
+
+
+    <thead>
+        <tr class="bg-info">
+            <th>Forventet</th>
+            <th>
+                @Html.DisplayNameFor(model => model.countExpected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expectedAdult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expectedChildren)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DisplayFor(model => model.countExpected)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.expectedAdult)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.expectedChildren)
+            </td>
+    </tbody>
+
+
+
+    <thead>
+        <tr class="bg-danger">
+            <th>Ikke Checket Ind</th>
+            <th>
+                @Html.DisplayNameFor(model => model.sumNotsum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notAdultSum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notChildrenSum)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DisplayFor(model => model.sumNotsum)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.notAdultSum)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.notChildrenSum)
+            </td>
+</tbody>
+
+
+</table>
+
+
+
